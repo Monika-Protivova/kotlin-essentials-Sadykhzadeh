@@ -18,12 +18,28 @@ import java.time.LocalDate
     - `getFinalGrade()`: returns the finalGrade for the assignment.
  */
 
+class Assignment(
+    val dueDate: LocalDate,
+    val assignee: String
+) {
+    private var finalGrade: Int? = null
+
+    fun setFinalGrade(grade: Int) {
+        require(grade in 0..100) { "Final grade must be between 0 and 100" }
+        finalGrade = grade
+    }
+
+    fun getFinalGrade(): Int? {
+        return finalGrade
+    }
+}
+
 /*
  Uncomment the main function to try the solution.
  */
 
-//fun main() {
-//    val assignment = Assignment(LocalDate.now(), "John Doe")
-//    assignment.setFinalGrade(90)
-//    println(assignment.getFinalGrade())
-//}
+fun main() {
+    val assignment = Assignment(LocalDate.now(), "John Doe")
+    assignment.setFinalGrade(90)
+    println(assignment.getFinalGrade())
+}
